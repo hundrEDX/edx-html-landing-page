@@ -1,0 +1,79 @@
+﻿@page
+@using LandingPage
+@namespace LandingPage.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IndexModel
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>
+        Learn HTML, JS and CSS with Microsoft
+    </title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container d-flex flex-column justify-content-around">
+            <a asp-page="Index" class="py-2 text-light">
+                Learn HTML, JavaScript and CSS with Microsoft
+            </a>
+        </div>
+    </nav>
+    @if(Model.SettingsConfigured)
+    {
+        <section class="embed-responsive embed-responsive-16by9">
+            <video controls poster="@(Model.MediaEndpoint)/poster.jpg" preload='metadata'>
+                <source src="@(Model.VideoEndpoint)/welcome.mp4" type="video/mp4">
+            </video>
+        </section>
+        <section class="row">
+            <article class="col-md-6 card text-white bg-dark border border-dark rounded-0 d-flex justify-content-center align-items-center">     
+                <p class="lead p-3">
+                    Learn the essential skills to create an interactive web application using HTML, JavaScript, and CSS.
+                </p>           
+            </article>
+            <article class="col-md-6 card text-white bg-dark border border-dark rounded-0">    
+                <a href="https://www.edx.org/course/introduction-to-html-and-javascript" class="btn btn-light m-5 btn-lg" target="_blank">
+                    Go to edX
+                </a>            
+            </article>
+        </section>
+        <section class="row">
+            <article class="col-md-6 p-0">                
+                <img src="@(Model.MediaEndpoint)/campus.jpg" class="img-fluid border-0 w-100" alt="Microsoft Campus">
+            </article>
+            <article class="col-md-6 p-0"">                
+                <img src="@(Model.MediaEndpoint)/conference.jpg" class="img-fluid border-0 w-100" alt="Microsoft Developer Conference">
+            </article>
+        </section>       
+    }
+    else
+    {
+        <section class="alert alert-danger mt-2 container" role="alert">
+            <h4 class="alert-heading">
+                Configuration Settings Missing
+            </h4>
+            <p>
+                You are required to add the following application settings for this website to work:
+            </p>
+            <ul>
+                <li>
+                    <strong>
+                        CDNMediaEndpoint
+                    </strong>
+                </li>
+                <li>
+                    <strong>
+                        CDNVideoEndpoint
+                    </strong>
+                </li>
+            </ul>
+        </section>        
+    } 
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
